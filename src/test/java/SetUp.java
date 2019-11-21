@@ -5,6 +5,8 @@ import Settings.TestMethods;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
+import java.net.MalformedURLException;
+
 import static Settings.BrowserEnum.*;
 import static Settings.Configuration.browserPicker;
 import static Settings.StaticData.HOST;
@@ -18,7 +20,7 @@ public class SetUp {
     public static HomePageMethods homePageMethods;
 
     @BeforeClass(alwaysRun = true)
-    public void setUp () {
+    public void setUp () throws MalformedURLException {
         driver = browserPicker(FIREFOX);
         testMethods = new TestMethods();
         configuration = new Configuration(driver);

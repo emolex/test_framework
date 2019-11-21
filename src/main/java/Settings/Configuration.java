@@ -7,11 +7,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
 
 public class Configuration {
@@ -22,11 +25,12 @@ public class Configuration {
         this.driver = driver;
     }
 
-    public static WebDriver browserPicker (BrowserEnum browser) {
+    public static WebDriver browserPicker (BrowserEnum browser) throws MalformedURLException {
             switch (browser) {
                 case FIREFOX:
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    DesiredCapabilities capabilities = new DesiredCapabilities();
+                    capabilities.setCapability("browserName", "firefox");
+                    driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), capabilities);
                     break;
                 case CHROME:
                     WebDriverManager.chromedriver().setup();
