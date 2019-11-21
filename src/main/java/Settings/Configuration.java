@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -28,9 +28,10 @@ public class Configuration {
     public static WebDriver browserPicker (BrowserEnum browser) throws MalformedURLException {
             switch (browser) {
                 case FIREFOX:
-                    DesiredCapabilities capabilities = new DesiredCapabilities();
-                    capabilities.setCapability("browserName", "firefox");
-                    driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), capabilities);
+                    FirefoxOptions firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.setCapability("browserName", "firefox");
+                    /**For more capabilities visit: https://selenium.dev/selenium/docs/api/java/org/openqa/selenium/firefox/FirefoxOptions.html */
+                    driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), firefoxOptions);
                     break;
                 case CHROME:
                     WebDriverManager.chromedriver().setup();

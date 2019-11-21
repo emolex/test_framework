@@ -1,0 +1,56 @@
+    1. To run HUB:
+java -jar /home/l4a-eczerski/Pobrane/selenium-server-standalone-3.9.1.jar -role hub
+
+TIP: After run hub we need to check all addresses and infos about where to register all nodes
+
+    2. To run NODE (on the same or other machine):
+java -Dwebdriver.chrome.driver=/home/l4a-eczerski/Pobrane/chromedriver -jar selenium-server-standalone-3.9.1.jar -role node -hub http://172.17.0.1:4444/grid/register
+
+    3.About grind_config.json file:
+To run HUB with specyfic config we type command: java -jar selenium-server-standalone-XXX-XX.jar -role hub -hubConfig hubConfig.json
+            (Instead of '-hubConfig' we type json file name of config)
+
+port – określa numer portu na jakim ma być uruchomiony Hub
+
+newSessionWaitTimeout – Jest to liczba całkowita w ms.  Określa maksymalny czas jaki test będzie czekał na dostępnego Noda.
+Jeśli czas zostanie przekroczony,
+test rzuci wyjątek o braku wolnego Noda/Capability. Nieokreślona, zerowa lub ujemna wartość oznacza czekanie w nieskończoność.
+
+servlets – Tablica dodatkowych serweletów do inicjalizacji/użycia na Hubie lub Nodach. Domyślnie pusty parametr.
+
+withoutServlets -  tablica serweletów do wykluczenia. Domyślnie pusta
+
+custom - Niestandardowe pary klucz / wartość do rejestru Huba. Domyślnie puste.
+
+capabilityMatcher – Pole, które wskazuje na klasę implementującą interfejs CapabilityMatcher.
+Specyfikuje logikę, na podstawie której Hub będzie przydzielał testy do Nodów
+
+registry – Pole specyfikujące klasę, która implementuje interfejs GridRegistry.
+Klasa ta specyfikuje rejestr jakiego Huba będzie używał.
+
+throwOnCapabilityNotPresent – Specyfikuje czy Huba ma rzucać wyjątkiem,
+kiedy nie znaleziono odpowiedniego Capablity (możliwości).
+
+cleanUpCycle – Definiuje czas w ms, po którym ma nastąpić czyszczenie zdalnych proxy.
+role – określa rolę, domyślnie HUB
+
+debug – określa czy Hub ma działać w trybie debug czy nie.
+
+browserTimeout - Wartość ta określa, jak długo Hub powinien czekać, zanim potraktuje określoną sesję testową
+(konkretny uruchomiony test) jako „zawieszoną” z powodu problemu z przeglądarką.
+
+timeout – Parametr czasu w sekundach. Określający po jakim czasie Hub automatycznie zwalnia Noda,
+który nie otrzymał żadnych żądań wykonania testu.
+Po przekroczeniu timeoutu Node zostaje zwolniony z wykonywania poprzedniego testu i przekazany do kolejki wolnych Nodów.
+Parametr pozwala usuwać Nody, które „zawisły” z powodu jakiejś awarii.
+
+
+    4. To run NODE with specyfic config we type command:
+java -Dwebdriver.chrome.driver=chromedriver.exe -jar selenium-server-standalone.jar -role node -nodeConfig node1Config.json
+            (Instead of '-hubConfig' we type json file name of config)
+
+    5. There is possibility to paid for commercial infrastructure instead of build your own, i.g
+    Sauce Labs - https://saucelabs.com/
+    Browser Stack - https://www.browserstack.com
+    GRIDLASTIC - https://www.gridlastic.com/
+
