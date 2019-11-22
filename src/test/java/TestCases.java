@@ -20,4 +20,11 @@ public class TestCases extends SetUp {
                 .clickOn_myOlx_before_login()
                 .login("emil.czerski@l4a-soft.com", "Tester123");
     }
+
+    public static void resetPassword () {
+        resetPasswordMethods
+                .resetPassword_sendNewCode()
+                .resetPassword_submitButton()
+                .resetPassword_typeEmail("dasdas");
+    }
 }

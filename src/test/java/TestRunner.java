@@ -9,20 +9,18 @@ public class TestRunner extends TestCases {
         driver.get(url);
     }
 
-    @Test
+    @Test (groups = {})
     public void test1_TEST () {
        test1(); }
 
-    @Test
+    @Test (groups = {"login, test"})
     public void test2_TEST () {
         loadUrl(LOGIN_PAGE);
         test2(); }
 
-    @Test
+    @Test(groups = "login")
     public void LogIn_TEST() {
         logIn();
     }
-
-
 
 }

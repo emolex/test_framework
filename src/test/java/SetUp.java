@@ -1,5 +1,6 @@
 import Pages.Header.HeaderPageMethods;
 import Pages.HomePage.HomePageMethods;
+import Pages.ResetPasswordPage.ResetPasswordMethods;
 import Settings.Configuration;
 import Settings.TestMethods;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class SetUp {
     private Configuration configuration;
     public static HeaderPageMethods headerPageMethods;
     public static HomePageMethods homePageMethods;
+    public static ResetPasswordMethods resetPasswordMethods;
 
     @BeforeClass(alwaysRun = true)
     public void setUp () throws MalformedURLException {
@@ -26,6 +28,7 @@ public class SetUp {
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
+        resetPasswordMethods = new ResetPasswordMethods(driver);
     }
 
     @BeforeMethod (alwaysRun = true)
