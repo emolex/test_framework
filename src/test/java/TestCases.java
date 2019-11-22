@@ -6,12 +6,18 @@ public class TestCases extends SetUp {
         PageFactory.initElements(driver, this);
     }
 
-    public static void testHomePage() {
+    public static void test1() {
         homePageMethods.moveMouseBetweenCategories();
-        headerPageMethods.clickOn_MyOlx();
+        headerPageMethods.clickOn_myOlx_before_login();
     }
 
-    public static void registerUser() {
-        headerPageMethods.clickOn_MyOlx();
+    public static void test2() {
+        headerPageMethods.clickOn_myOlx_before_login();
+    }
+
+    public static void logIn() {
+        headerPageMethods
+                .clickOn_myOlx_before_login()
+                .login("emil.czerski@l4a-soft.com", "Tester123");
     }
 }

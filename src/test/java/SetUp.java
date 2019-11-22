@@ -21,11 +21,16 @@ public class SetUp {
 
     @BeforeClass(alwaysRun = true)
     public void setUp () throws MalformedURLException {
-        driver = browserPicker(FIREFOX);
+        driver = browserPicker(CHROME);
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
+    }
+
+    @BeforeMethod (alwaysRun = true)
+        protected void openSite(){
+            driver.get(HOST);
     }
 
     @AfterMethod

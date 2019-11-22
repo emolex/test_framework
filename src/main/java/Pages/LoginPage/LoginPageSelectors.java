@@ -10,6 +10,18 @@ public class LoginPageSelectors {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy (id = "register_tab")
-    WebElement register_tab;
+    @FindBy(id = "login_tab")
+    protected WebElement logIn_Tab;
+
+    @FindBy(id = "register_tab")
+    protected WebElement registerTab;
+
+    @FindBy(id = "userEmail")
+    protected WebElement logIn_emailInput;
+
+    @FindBy(id = "userPass")
+    protected WebElement logIn_passwordInput;
+
+    @FindBy(id = "se_userLogin")
+    protected WebElement logIn_LogInButton;
 }

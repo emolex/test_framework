@@ -1,6 +1,6 @@
 import org.testng.annotations.Test;
 
-import static Settings.StaticData.*;
+import static Settings.StaticData.LOGIN_PAGE;
 
 public class TestRunner extends TestCases {
 
@@ -10,11 +10,19 @@ public class TestRunner extends TestCases {
     }
 
     @Test
-    public void testHomePage_TEST () {
-       testHomePage(); }
+    public void test1_TEST () {
+       test1(); }
 
     @Test
-    public void registerUser_TEST () {
+    public void test2_TEST () {
         loadUrl(LOGIN_PAGE);
-        registerUser(); }
+        test2(); }
+
+    @Test
+    public void LogIn_TEST() {
+        logIn();
+    }
+
+
+
 }
