@@ -21,10 +21,13 @@ public class TestCases extends SetUp {
                 .login("emil.czerski@l4a-soft.com", "Tester123");
     }
 
-    public static void resetPassword () {
-        resetPasswordMethods
-                .resetPassword_sendNewCode()
+    public static void resetPassword () { //Check why cant build longer chain only by "headerPageMethods" I got NullPointer
+        headerPageMethods.clickOn_myOlx_before_login()
+                .remindPasswordButton();
+        resetPasswordPageMethods.resetPassword_typeEmail("emil.czerski@l4a-soft.com")
                 .resetPassword_submitButton()
-                .resetPassword_typeEmail("dasdas");
+                .resetPassword_typeNewCode("1231")
+                .resetPassword_newPassword("Tester123!")
+                .resetPassword_submitButton();
     }
 }

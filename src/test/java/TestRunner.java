@@ -19,8 +19,12 @@ public class TestRunner extends TestCases {
         test2(); }
 
     @Test(groups = "login")
-    public void LogIn_TEST() {
+    public void logIn_TEST() {
         logIn();
     }
 
+    @Test(groups = "password")
+    public void resetPassword_TEST() {
+        resetPassword();
+    }
 }

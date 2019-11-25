@@ -4,33 +4,33 @@ import org.openqa.selenium.WebDriver;
 
 import static Settings.Configuration.waitForIt;
 
-public class ResetPasswordMethods extends ResetPasswordSelectors {
+public class ResetPasswordPageMethods extends ResetPasswordSelectors {
 
-    public ResetPasswordMethods(WebDriver driver) {
+    public ResetPasswordPageMethods(WebDriver driver) {
         super(driver);
     }
 
-    public ResetPasswordMethods resetPassword_typeEmail(String email) {
+    public ResetPasswordPageMethods resetPassword_typeEmail(String email) {
         waitForIt(reset_email).sendKeys(email);
         return this;
     }
 
-    public ResetPasswordMethods resetPassword_submitButton() {
+    public ResetPasswordPageMethods resetPassword_submitButton() {
         waitForIt(reset_submit).click();
         return this;
     }
 
-    public ResetPasswordMethods resetPassword_sendNewCode() {
+    public ResetPasswordPageMethods resetPassword_sendNewCode() {
         waitForIt(reset_resendNewCode).click();
         return this;
     }
 
-    public ResetPasswordMethods resetPassword_typeNewCode (String newCode) {
+    public ResetPasswordPageMethods resetPassword_typeNewCode (String newCode) {
         waitForIt(reset_code).click();
         return this;
     }
 
-    public ResetPasswordMethods resetPassword_newPassword (String newPassword) {
+    public ResetPasswordPageMethods resetPassword_newPassword (String newPassword) {
         waitForIt(reset_newPassword).click();
         return this;
     }

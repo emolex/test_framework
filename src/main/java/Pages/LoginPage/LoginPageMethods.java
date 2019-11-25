@@ -1,6 +1,7 @@
 package Pages.LoginPage;
 
 import Pages.HomePage.HomePageMethods;
+import Pages.ResetPasswordPage.ResetPasswordPageMethods;
 import org.openqa.selenium.WebDriver;
 
 import static Settings.Configuration.waitForIt;
@@ -18,6 +19,11 @@ public class LoginPageMethods extends LoginPageSelectors{
         waitForIt(logIn_LogInButton).click();
 
         return new HomePageMethods(driver);
+    }
+
+    public ResetPasswordPageMethods remindPasswordButton () {
+        waitForIt(logIn_remindPassword).click();
+        return new ResetPasswordPageMethods(driver);
     }
 
 }

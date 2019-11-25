@@ -24,4 +24,7 @@ public class LoginPageSelectors {
 
     @FindBy(id = "se_userLogin")
     protected WebElement logIn_LogInButton;
+
+    @FindBy(xpath = "//*[@href='https://www.olx.pl/konto/forgotpassword/']")
+    protected WebElement logIn_remindPassword;
 }
