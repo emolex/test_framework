@@ -7,6 +7,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -55,12 +56,13 @@ public class Configuration {
                     driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), firefoxOptions);
                     break;
                 case CHROME:
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    ChromeOptions chromeOptions = new ChromeOptions();
+                    chromeOptions.setCapability("browserName", "chrome");
+                    driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), chromeOptions);
                     break;
                 case EDGE:
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
+//                    WebDriverManager.edgedriver().setup();
+//                    driver = new EdgeDriver();
                 default:
                     System.out.println("U PICKED INVALID BROWSER. PLEASE TYPE: 'FIREFOX', 'CHROME' or 'EDGE'");
             }
