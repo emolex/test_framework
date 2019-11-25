@@ -1,5 +1,6 @@
 package Settings;
 
+import Settings.Enums.BrowserEnum;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -7,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -17,6 +19,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
+import static Settings.JsonData.Json_Properties.*;
+
 public class Configuration {
 
     private static WebDriver driver;
@@ -25,7 +29,24 @@ public class Configuration {
         this.driver = driver;
     }
 
-    public static WebDriver browserPicker (BrowserEnum browser) throws MalformedURLException {
+    public static WebDriver browserPicker ( BrowserEnum browser) throws MalformedURLException {
+        if (isRemote==false) {
+            switch (browser) {
+                case FIREFOX:
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                    break;
+                case CHROME:
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                    break;
+                case EDGE:
+                    WebDriverManager.edgedriver().setup();
+                    driver = new EdgeDriver();
+                default:
+                    System.out.println("U PICKED INVALID BROWSER. PLEASE TYPE: 'FIREFOX', 'CHROME' or 'EDGE'");
+            }
+        } else if (isRemote==true) {
             switch (browser) {
                 case FIREFOX:
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -43,6 +64,7 @@ public class Configuration {
                 default:
                     System.out.println("U PICKED INVALID BROWSER. PLEASE TYPE: 'FIREFOX', 'CHROME' or 'EDGE'");
             }
+        }
         driver.manage().window().maximize(); //ZOBACZYC CZYM JEST fullscreen()
         return driver;
     }

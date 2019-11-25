@@ -1,4 +1,4 @@
-package Settings;
+package Settings.Enums;
 
 public enum BrowserEnum {
 
