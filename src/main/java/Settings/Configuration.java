@@ -6,15 +6,11 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -53,12 +49,12 @@ public class Configuration {
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     firefoxOptions.setCapability("browserName", "firefox");
                     /**For more capabilities visit: https://selenium.dev/selenium/docs/api/java/org/openqa/selenium/firefox/FirefoxOptions.html */
-                    driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), firefoxOptions);
+                    driver = new RemoteWebDriver(new URL(gridUrl), firefoxOptions);
                     break;
                 case CHROME:
                     ChromeOptions chromeOptions = new ChromeOptions();
                     chromeOptions.setCapability("browserName", "chrome");
-                    driver = new RemoteWebDriver(new URL("http://172.17.0.1:4444/wd/hub"), chromeOptions);
+                    driver = new RemoteWebDriver(new URL(gridUrl), chromeOptions);
                     break;
                 case EDGE:
 //                    WebDriverManager.edgedriver().setup();
