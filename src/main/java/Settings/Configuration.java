@@ -6,36 +6,48 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-import static Settings.JsonData.Json_Properties.*;
+import static Settings.JsonData.Json_Properties.gridUrl;
+import static Settings.JsonData.Json_Properties.isRemote;
+import static Settings.StaticData.HOST;
 
 public class Configuration {
 
     private static WebDriver driver;
+    private static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
+    private static ThreadLocal<BrowserEnum> browserTypeThreadLocal = new ThreadLocal<>();
 
     public Configuration(WebDriver driver) {
-        this.driver = driver;
+        Configuration.driver = driver;
     }
 
-    public static WebDriver browserPicker ( BrowserEnum browser) throws MalformedURLException {
-        if (isRemote==false) {
+    public static WebDriver browserPicker (BrowserEnum browser) throws MalformedURLException {
+
+//        WebDriver driver = null;
+
+        if (!isRemote) {
             switch (browser) {
                 case FIREFOX:
                     WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
+                    webDriverThreadLocal.set(driver = new FirefoxDriver());
+
                     break;
                 case CHROME:
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    webDriverThreadLocal.set( driver = new ChromeDriver());
                     break;
                 case EDGE:
                     WebDriverManager.edgedriver().setup();
@@ -43,7 +55,7 @@ public class Configuration {
                 default:
                     System.out.println("U PICKED INVALID BROWSER. PLEASE TYPE: 'FIREFOX', 'CHROME' or 'EDGE'");
             }
-        } else if (isRemote==true) {
+        } else {
             switch (browser) {
                 case FIREFOX:
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
@@ -63,17 +75,36 @@ public class Configuration {
                     System.out.println("U PICKED INVALID BROWSER. PLEASE TYPE: 'FIREFOX', 'CHROME' or 'EDGE'");
             }
         }
-        driver.manage().window().maximize(); //ZOBACZYC CZYM JEST fullscreen()
-        return driver;
+
+        browserTypeThreadLocal.set(browser);
+        webDriverThreadLocal.set(driver);
+
+        driver.manage().window().maximize();
+        return webDriverThreadLocal.get();
+    }
+
+    public static void startTestCase () {
+        webDriverThreadLocal.get().get(HOST);
+
+    }
+
+
+    public void closeTestCase () {
+
+    }
+
+    public void closeRunner() {
+        webDriverThreadLocal.get().quit();
+        webDriverThreadLocal.remove();
+        driver=null;
     }
 
     public static WebElement waitForIt(WebElement webElement) {
-        Wait<WebDriver> wait = new FluentWait<>(driver)
+        Wait<WebDriver> wait = new FluentWait<>(webDriverThreadLocal.get())
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofSeconds(2))
                 .ignoring(NoSuchElementException.class);
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(webElement));
-        return element;
+        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
     public static void sleep(int time){

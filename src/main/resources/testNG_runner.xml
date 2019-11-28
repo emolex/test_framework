@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="All Pet Store Tests">
+<suite name="All OLX tests" parallel="tests" thread-count="3">
 
-    <test name="Negative Register Tests">
+    <test name="First test runner">
+        <parameter name="browser" value="CHROME"/>
+        <classes>
+            <class name="TestRunner"/>
+        </classes>
+    </test>
+    <test name="Another test runner">
+        <parameter name="browser" value="FIREFOX"/>
         <classes>
             <class name="TestRunner"/>
         </classes>

@@ -23,8 +23,8 @@ public class TestRunner extends TestCases {
         logIn();
     }
 
-    @Test(groups = "password")
-    public void resetPassword_TEST() {
-        resetPassword();
-    }
+//    @Test(groups = "password")
+//    public void resetPassword_TEST() {
+//        resetPassword();
+//    }
 }

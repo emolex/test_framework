@@ -2,35 +2,35 @@ import Pages.Header.HeaderPageMethods;
 import Pages.HomePage.HomePageMethods;
 import Pages.ResetPasswordPage.ResetPasswordPageMethods;
 import Settings.Configuration;
+import Settings.Enums.BrowserEnum;
 import Settings.JsonData.Json_Properties;
 import Settings.TestMethods;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
 import static Settings.Configuration.browserPicker;
-import static Settings.Enums.BrowserEnum.FIREFOX;
-import static Settings.StaticData.HOST;
+import static Settings.Configuration.startTestCase;
 
 public class SetUp {
 
     private Json_Properties json_properties;
     protected WebDriver driver;
+    protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
     private TestMethods testMethods;
     private Configuration configuration;
     public static HeaderPageMethods headerPageMethods;
     public static HomePageMethods homePageMethods;
     public static ResetPasswordPageMethods resetPasswordPageMethods;
 
+
+    @Parameters("browser")
     @BeforeClass(alwaysRun = true)
-    public void setUp () throws MalformedURLException {
+    public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
         json_properties = new Json_Properties();
         json_properties.parseJson();
-        driver = browserPicker(FIREFOX);
+        driver = browserPicker(browser);
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);
@@ -40,20 +40,17 @@ public class SetUp {
 
     @BeforeMethod (alwaysRun = true)
         protected void openSite(){
-            driver.get(HOST);
+        startTestCase();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     protected void cleanUp() {
-        driver.get(HOST);
+        System.out.printf("TEST CASE CLOSING....");
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass (alwaysRun = true)
     protected void closeTestCase () {
-//        driver.close();
-        driver.quit();
-        driver=null;
+        configuration.closeRunner();
     }
-
 
 }
