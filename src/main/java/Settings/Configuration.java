@@ -43,7 +43,6 @@ public class Configuration {
                 case FIREFOX:
                     WebDriverManager.firefoxdriver().setup();
                     webDriverThreadLocal.set(driver = new FirefoxDriver());
-
                     break;
                 case CHROME:
                     WebDriverManager.chromedriver().setup();
@@ -80,6 +79,10 @@ public class Configuration {
         webDriverThreadLocal.set(driver);
 
         driver.manage().window().maximize();
+        if (webDriverThreadLocal.get() == null) {
+            throw new IllegalStateException("WebDriver Instance was null! Please create instance of WebDriver using setWebDriver!");
+        }
+
         return webDriverThreadLocal.get();
     }
 
