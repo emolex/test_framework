@@ -11,7 +11,8 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 
 import static Settings.Configuration.browserPicker;
-import static Settings.Configuration.startTestCase;
+import static Settings.Enums.BrowserEnum.FIREFOX;
+import static Settings.StaticData.HOST;
 
 public class SetUp {
 
@@ -26,25 +27,26 @@ public class SetUp {
 
 
     @Parameters("browser")
-    @BeforeClass(alwaysRun = true)
+    @BeforeTest(alwaysRun = true)
     public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
         json_properties = new Json_Properties();
         json_properties.parseJson();
-        driver = browserPicker(browser);
+        driver = browserPicker(FIREFOX);
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
         resetPasswordPageMethods = new ResetPasswordPageMethods(driver);
+        driver.get(HOST);
     }
-
     @BeforeMethod (alwaysRun = true)
-        protected void openSite(){
-        startTestCase();
+    public void startNewSession () {
+
     }
 
     @AfterMethod(alwaysRun = true)
     protected void cleanUp() {
+        webDriverThreadLocal.remove();
         System.out.printf("TEST CASE CLOSING....");
     }
 

@@ -2,27 +2,22 @@ package Settings;
 
 import Settings.Enums.BrowserEnum;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.*;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.*;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-import static Settings.JsonData.Json_Properties.gridUrl;
-import static Settings.JsonData.Json_Properties.isRemote;
-import static Settings.StaticData.HOST;
+import static Settings.Enums.BrowserEnum.*;
+import static Settings.JsonData.Json_Properties.*;
+import static Settings.StaticData.*;
 
 public class Configuration {
 
@@ -97,9 +92,13 @@ public class Configuration {
     }
 
     public void closeRunner() {
-        webDriverThreadLocal.get().quit();
+        webDriverThreadLocal.get().close();
+
+        if (!browserTypeThreadLocal.get().equals(FIREFOX)) {
+            webDriverThreadLocal.get().quit();
+        }
         webDriverThreadLocal.remove();
-        driver=null;
+        browserTypeThreadLocal.remove();
     }
 
     public static WebElement waitForIt(WebElement webElement) {

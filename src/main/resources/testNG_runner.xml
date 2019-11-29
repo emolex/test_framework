@@ -2,17 +2,35 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="All OLX tests" parallel="tests" thread-count="2">
 
-    <test name="First test runner">
-        <parameter name="browser" value="CHROME"/>
-        <classes>
-            <class name="TestRunner"/>
-        </classes>
-    </test>
-<!--    <test name="Another test runner">-->
-<!--        <parameter name="browser" value="FIREFOX"/>-->
+
+        <!--  RUN ALL TestRunner CLASS WITH SPECIFIED BROWSER  -->
+<!--    <test name="First test runner">-->
+<!--        <parameter name="browser" value="CHROME"/>-->
 <!--        <classes>-->
 <!--            <class name="TestRunner"/>-->
 <!--        </classes>-->
 <!--    </test>-->
+
+    <test name="Another test runner">
+        <parameter name="browser" value="FIREFOX"/>
+        <classes>
+            <class name="TestRunner"/>
+        </classes>
+    </test>
+
+
+    <!--  ONLY ONE TEST IN TestRunner CLASS  -->
+<!--    <test name="First test runner">-->
+<!--        <parameter name="browser" value="CHROME"/>-->
+<!--        <classes>-->
+<!--            <class name="TestRunner">-->
+<!--                <methods>-->
+<!--                    <include name = "resetPassword_TEST" />-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+
 
 </suite>

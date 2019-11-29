@@ -9,22 +9,23 @@ public class TestRunner extends TestCases {
         driver.get(url);
     }
 
+
     @Test (groups = {})
-    public void test1_TEST () {
-       test1(); }
+    public void testWithWarnings_TEST () {
+       testWithWarnings(); }
 
     @Test (groups = {"login, test"})
-    public void test2_TEST () {
+    public void testWithError_TEST () {
         loadUrl(LOGIN_PAGE);
-        test2(); }
+        testWithError(); }
 
     @Test(groups = "login")
     public void logIn_TEST() {
         logIn();
     }
 
-//    @Test(groups = "password")
-//    public void resetPassword_TEST() {
-//        resetPassword();
-//    }
+    @Test(groups = "password")
+    public void resetPassword_TEST() {
+        resetPassword();
+    }
 }
