@@ -10,6 +10,7 @@ public class TestCases extends SetUp {
 
 
 
+    @Step ("Test checking warning status.")
     public static void testWithWarnings() {
         homePageMethods.moveMouseBetweenCategories();
         headerPageMethods.clickOn_myOlx_before_login();
