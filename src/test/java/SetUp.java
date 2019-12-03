@@ -24,7 +24,6 @@ public class SetUp {
     public static HomePageMethods homePageMethods;
     public static ResetPasswordPageMethods resetPasswordPageMethods;
 
-
     @Parameters("browser")
     @BeforeTest(alwaysRun = true)
     public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
@@ -36,8 +35,8 @@ public class SetUp {
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
         resetPasswordPageMethods = new ResetPasswordPageMethods(driver);
-
     }
+
     @BeforeMethod (alwaysRun = true)
     public void startNewSession () {
         driver.get(HOST);
@@ -45,6 +44,7 @@ public class SetUp {
 
     @AfterMethod(alwaysRun = true)
     protected void cleanUp() {
+        driver.manage().deleteAllCookies();
         webDriverThreadLocal.remove();
         System.out.printf("TEST CASE CLOSING....");
     }

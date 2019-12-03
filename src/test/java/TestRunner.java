@@ -17,10 +17,10 @@ public class TestRunner extends TestCases {
 //        loadUrl(LOGIN_PAGE);
 //        testWithError(); }
 
-//    @Test(groups = "login")
-//    public void logIn_TEST() {
-//        logIn();
-//    }
+    @Test(groups = "login")
+    public void logIn_TEST() {
+        logIn();
+    }
 
     @Test(groups = "password")
     public void resetPassword_TEST() {
