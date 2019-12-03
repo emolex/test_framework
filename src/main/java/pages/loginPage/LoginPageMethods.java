@@ -1,10 +1,10 @@
-package Pages.LoginPage;
+package pages.loginPage;
 
-import Pages.HomePage.HomePageMethods;
-import Pages.ResetPasswordPage.ResetPasswordPageMethods;
+import pages.homePage.HomePageMethods;
+import pages.resetPasswordPage.ResetPasswordPageMethods;
 import org.openqa.selenium.WebDriver;
 
-import static Settings.Configuration.waitForIt;
+import static settings.Configuration.waitForIt;
 
 public class LoginPageMethods extends LoginPageSelectors{
 

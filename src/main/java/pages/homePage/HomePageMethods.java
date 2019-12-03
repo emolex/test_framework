@@ -1,12 +1,12 @@
-package Pages.HomePage;
+package pages.homePage;
 
-import Pages.Header.HeaderPageMethods;
+import pages.header.HeaderPageMethods;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
-import static Settings.TestMethods.doSomeAction;
+import static settings.TestMethods.doSomeAction;
 
 
 public class HomePageMethods extends HomePageSelectors{

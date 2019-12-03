@@ -1,4 +1,4 @@
-package Settings.JsonData;
+package settings.jsonData;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -7,23 +7,20 @@ import org.json.simple.parser.ParseException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Json_Properties {
+public class Json_Notifies {
 
-    public static boolean isRemote;
-    public static String gridUrl;
+    public static String register_success_notify;
 
     public static void parseJson() {
         JSONParser parser = new JSONParser();
         try {
-            Object object = parser.parse(new FileReader(System.getProperty("user.dir")+"/src/main/resources/Jsons/Properties.json"));
+            Object object = parser.parse(new FileReader(System.getProperty("user.dir")+"/src/resources/Json_Notifies.json"));
             JSONObject jsonObject = (JSONObject) object;
-            isRemote = (boolean) jsonObject.get("isRemote");
-            gridUrl = (String) jsonObject.get("gridUrl");
+            register_success_notify = (String) jsonObject.get("register_success_notify");
 
 
         } catch (ParseException | IOException e) {
             e.printStackTrace();
         }
     }
-
 }

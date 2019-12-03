@@ -1,11 +1,11 @@
-package Pages.Header;
+package pages.header;
 
-import Pages.LoginPage.LoginPageMethods;
+import pages.loginPage.LoginPageMethods;
 import io.qameta.allure.Step;
 import org.apache.logging.log4j.*;
 import org.openqa.selenium.WebDriver;
 
-import static Settings.Configuration.waitForIt;
+import static settings.Configuration.waitForIt;
 
 public class HeaderPageMethods extends HeaderPageSelectors{
 

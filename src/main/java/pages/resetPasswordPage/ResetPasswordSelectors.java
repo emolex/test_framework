@@ -1,4 +1,4 @@
-package Pages.ResetPasswordPage;
+package pages.resetPasswordPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

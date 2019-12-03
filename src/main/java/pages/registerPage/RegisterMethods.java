@@ -1,4 +1,4 @@
-package Pages.RegisterPage;
+package pages.registerPage;
 
 import org.openqa.selenium.WebDriver;
 

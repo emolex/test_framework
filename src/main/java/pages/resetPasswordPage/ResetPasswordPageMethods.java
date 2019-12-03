@@ -1,8 +1,8 @@
-package Pages.ResetPasswordPage;
+package pages.resetPasswordPage;
 
 import org.openqa.selenium.WebDriver;
 
-import static Settings.Configuration.waitForIt;
+import static settings.Configuration.waitForIt;
 
 public class ResetPasswordPageMethods extends ResetPasswordSelectors {
 

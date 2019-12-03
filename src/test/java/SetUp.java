@@ -1,19 +1,19 @@
-import Pages.Header.HeaderPageMethods;
-import Pages.HomePage.HomePageMethods;
-import Pages.ResetPasswordPage.ResetPasswordPageMethods;
-import Settings.Configuration;
-import Settings.Enums.BrowserEnum;
-import Settings.JsonData.Json_Properties;
-import Settings.TestMethods;
+import pages.header.HeaderPageMethods;
+import pages.homePage.HomePageMethods;
+import pages.resetPasswordPage.ResetPasswordPageMethods;
+import settings.Configuration;
+import settings.enums.BrowserEnum;
+import settings.jsonData.Json_Properties;
+import settings.TestMethods;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
-import static Settings.Configuration.browserPicker;
-import static Settings.JsonData.Json_Properties.parseJson;
-import static Settings.StaticData.HOST;
+import static settings.Configuration.browserPicker;
+import static settings.jsonData.Json_Properties.parseJson;
+import static settings.StaticData.HOST;
 
 public class SetUp {
 

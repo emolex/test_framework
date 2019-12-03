@@ -1,23 +1,30 @@
-package Settings;
+package settings;
 
-import Settings.Enums.BrowserEnum;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import settings.enums.BrowserEnum;
+import settings.listeners.WebDriverEventListenerRegister;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-import static Settings.Enums.BrowserEnum.*;
-import static Settings.JsonData.Json_Properties.*;
-import static Settings.StaticData.*;
+import static settings.StaticData.HOST;
+import static settings.enums.BrowserEnum.FIREFOX;
+import static settings.jsonData.Json_Properties.gridUrl;
+import static settings.jsonData.Json_Properties.isRemote;
 
 public class Configuration {
 
@@ -30,8 +37,6 @@ public class Configuration {
     }
 
     public static WebDriver browserPicker (BrowserEnum browser) throws MalformedURLException {
-
-//        WebDriver driver = null;
 
         if (!isRemote) {
             switch (browser) {
@@ -69,6 +74,7 @@ public class Configuration {
                     System.out.println("U PICKED INVALID BROWSER. PLEASE TYPE: 'FIREFOX', 'CHROME' or 'EDGE'");
             }
         }
+        driver = WebDriverEventListenerRegister.registerWebDriverListener(driver);
 
         browserTypeThreadLocal.set(browser);
         webDriverThreadLocal.set(driver);

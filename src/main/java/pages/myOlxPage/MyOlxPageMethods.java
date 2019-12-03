@@ -1,4 +1,4 @@
-package Pages.MyOlxPage;
+package pages.myOlxPage;
 
 import org.openqa.selenium.WebDriver;
 

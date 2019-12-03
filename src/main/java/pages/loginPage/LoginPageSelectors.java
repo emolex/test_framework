@@ -1,4 +1,4 @@
-package Pages.LoginPage;
+package pages.loginPage;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;

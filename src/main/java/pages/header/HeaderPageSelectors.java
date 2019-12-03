@@ -1,4 +1,4 @@
-package Pages.Header;
+package pages.header;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
