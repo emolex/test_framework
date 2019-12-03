@@ -36,11 +36,11 @@ public class SetUp {
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
         resetPasswordPageMethods = new ResetPasswordPageMethods(driver);
-        driver.get(HOST);
+
     }
     @BeforeMethod (alwaysRun = true)
     public void startNewSession () {
-
+        driver.get(HOST);
     }
 
     @AfterMethod(alwaysRun = true)
