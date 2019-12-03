@@ -11,14 +11,15 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 
 import static Settings.Configuration.browserPicker;
+import static Settings.JsonData.Json_Properties.parseJson;
 import static Settings.StaticData.HOST;
 
 public class SetUp {
 
-    private Json_Properties json_properties;
+    public Json_Properties json_properties;
     protected WebDriver driver;
     protected static ThreadLocal<WebDriver> webDriverThreadLocal = new ThreadLocal<>();
-    private TestMethods testMethods;
+    public TestMethods testMethods;
     private Configuration configuration;
     public static HeaderPageMethods headerPageMethods;
     public static HomePageMethods homePageMethods;
@@ -28,7 +29,7 @@ public class SetUp {
     @BeforeTest(alwaysRun = true)
     public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
         json_properties = new Json_Properties();
-        json_properties.parseJson();
+        parseJson();
         driver = browserPicker(browser);
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
