@@ -11,7 +11,6 @@ import org.testng.annotations.*;
 import java.net.MalformedURLException;
 
 import static Settings.Configuration.browserPicker;
-import static Settings.Enums.BrowserEnum.FIREFOX;
 import static Settings.StaticData.HOST;
 
 public class SetUp {
@@ -31,7 +30,7 @@ public class SetUp {
     public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
         json_properties = new Json_Properties();
         json_properties.parseJson();
-        driver = browserPicker(FIREFOX);
+        driver = browserPicker(browser);
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);

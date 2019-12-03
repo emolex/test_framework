@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="All OLX tests" parallel="tests" thread-count="2">
+<suite name="All Pet Store Tests" parallel="tests" thread-count="2">
 
 
-        <!--  RUN ALL TestRunner CLASS WITH SPECIFIED BROWSER  -->
-<!--    <test name="First test runner">-->
-<!--        <parameter name="browser" value="CHROME"/>-->
-<!--        <classes>-->
-<!--            <class name="TestRunner"/>-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test name="Another test runner">
-        <parameter name="browser" value="FIREFOX"/>
+<!--          RUN ALL TestRunner CLASS WITH SPECIFIED BROWSER-->
+    <test name="First test runner">
+        <parameter name="browser" value="CHROME"/>
         <classes>
             <class name="TestRunner"/>
         </classes>
     </test>
 
+<!--    <test name="Another test runner">-->
+<!--        <parameter name="browser" value="FIREFOX"/>-->
+<!--        <classes>-->
+<!--            <class name="TestRunner"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <!--  ONLY ONE TEST IN TestRunner CLASS  -->
+
+    <!--  ONLY ONE TEST CASE IN TestRunner CLASS  -->
 <!--    <test name="First test runner">-->
 <!--        <parameter name="browser" value="CHROME"/>-->
 <!--        <classes>-->
@@ -30,7 +30,6 @@
 <!--            </class>-->
 <!--        </classes>-->
 <!--    </test>-->
-
 
 
 </suite>
