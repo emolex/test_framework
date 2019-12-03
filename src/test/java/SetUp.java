@@ -5,6 +5,7 @@ import Settings.Configuration;
 import Settings.Enums.BrowserEnum;
 import Settings.JsonData.Json_Properties;
 import Settings.TestMethods;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 
@@ -27,6 +28,7 @@ public class SetUp {
 
     @Parameters("browser")
     @BeforeTest(alwaysRun = true)
+    @Step("Set up all objects and implement driver...")
     public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
         json_properties = new Json_Properties();
         parseJson();
@@ -39,18 +41,19 @@ public class SetUp {
     }
 
     @BeforeMethod (alwaysRun = true)
+    @Step("Open new sie...")
     public void startNewSession () {
         driver.get(HOST);
     }
 
     @AfterMethod(alwaysRun = true)
+    @Step("Clean all cookies and remove ...")
     protected void cleanUp() {
         driver.manage().deleteAllCookies();
-        webDriverThreadLocal.remove();
-        System.out.printf("TEST CASE CLOSING....");
     }
 
     @AfterClass (alwaysRun = true)
+    @Step("Close driver and browser, end test runner ...")
     protected void closeTestCase () {
         configuration.closeRunner();
     }
