@@ -9,7 +9,7 @@ public class HomePageSelectors {
 
     protected WebDriver driver;
 
-    protected HomePageSelectors(WebDriver driver) {
+    public HomePageSelectors(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
@@ -19,5 +19,8 @@ public class HomePageSelectors {
 
     @FindBy(xpath = "//a[@data-id='87']")
     protected WebElement moda_category;
+
+    @FindBy (id = "headerLogo")
+    public static WebElement mainAnnounceModal;
 
 }

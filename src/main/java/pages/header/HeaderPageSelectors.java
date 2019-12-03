@@ -14,4 +14,7 @@ public class HeaderPageSelectors {
 
     @FindBy (id = "topLoginLink") WebElement my_olx;
 
+    @FindBy(id = "userEmail") public static WebElement logIn_emailInput;
+
+
 }

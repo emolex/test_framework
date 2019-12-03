@@ -17,7 +17,7 @@ public class LoginPageSelectors {
     protected WebElement registerTab;
 
     @FindBy(id = "userEmail")
-    protected WebElement logIn_emailInput;
+    public static WebElement logIn_emailInput;
 
     @FindBy(id = "userPass")
     protected WebElement logIn_passwordInput;

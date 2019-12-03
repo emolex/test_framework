@@ -26,5 +26,5 @@ public class ResetPasswordSelectors {
     protected WebElement reset_resendNewCode;
 
     @FindBy(xpath = "//*[@title='E-mail']")
-    protected WebElement reset_email;
+    public WebElement reset_email;
 }

@@ -1,19 +1,19 @@
+import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.*;
 import pages.header.HeaderPageMethods;
 import pages.homePage.HomePageMethods;
 import pages.resetPasswordPage.ResetPasswordPageMethods;
 import settings.Configuration;
+import settings.TestMethods;
 import settings.enums.BrowserEnum;
 import settings.jsonData.Json_Properties;
-import settings.TestMethods;
-import io.qameta.allure.Step;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
 import static settings.Configuration.browserPicker;
-import static settings.jsonData.Json_Properties.parseJson;
 import static settings.StaticData.HOST;
+import static settings.jsonData.Json_Properties.parseJson;
 
 public class SetUp {
 
@@ -38,6 +38,7 @@ public class SetUp {
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
         resetPasswordPageMethods = new ResetPasswordPageMethods(driver);
+
     }
 
     @BeforeMethod (alwaysRun = true)

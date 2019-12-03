@@ -1,13 +1,15 @@
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import settings.AssertLogic;
 
 public class TestCases extends SetUp {
+
+    private static AssertLogic assertLogic;
 
     TestCases () {
         PageFactory.initElements(driver, this);
     }
-
 
 
     @Step ("Test checking warning status.")
@@ -29,6 +31,7 @@ public class TestCases extends SetUp {
         headerPageMethods
                 .clickOn_myOlx_before_login()
                 .login("emil.czerski@l4a-soft.com", "Tester123");
+//        assertLogic = new AssertLogic(mainAnnounceModal).isVisible();
     }
 
 

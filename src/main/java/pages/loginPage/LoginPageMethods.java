@@ -1,8 +1,8 @@
 package pages.loginPage;
 
+import org.openqa.selenium.WebDriver;
 import pages.homePage.HomePageMethods;
 import pages.resetPasswordPage.ResetPasswordPageMethods;
-import org.openqa.selenium.WebDriver;
 
 import static settings.Configuration.waitForIt;
 
@@ -17,7 +17,6 @@ public class LoginPageMethods extends LoginPageSelectors{
         waitForIt(logIn_emailInput).sendKeys(email);
         waitForIt(logIn_passwordInput).sendKeys(pass);
         waitForIt(logIn_LogInButton).click();
-
         return new HomePageMethods(driver);
     }
 
