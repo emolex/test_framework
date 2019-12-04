@@ -12,6 +12,7 @@ import settings.jsonData.Json_Properties;
 import java.net.MalformedURLException;
 
 import static settings.Configuration.browserPicker;
+import static settings.Configuration.getWebdriver;
 import static settings.StaticData.HOST;
 import static settings.jsonData.Json_Properties.parseJson;
 
@@ -32,13 +33,13 @@ public class SetUp {
     public void setUp (@Optional BrowserEnum browser) throws MalformedURLException {
         json_properties = new Json_Properties();
         parseJson();
-        driver = browserPicker(browser);
+        browserPicker(browser);
+        driver = getWebdriver();
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);
         headerPageMethods = new HeaderPageMethods(driver);
         resetPasswordPageMethods = new ResetPasswordPageMethods(driver);
-
     }
 
     @BeforeMethod (alwaysRun = true)

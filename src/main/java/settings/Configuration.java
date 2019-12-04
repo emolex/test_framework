@@ -21,7 +21,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-import static settings.StaticData.HOST;
 import static settings.enums.BrowserEnum.FIREFOX;
 import static settings.jsonData.Json_Properties.gridUrl;
 import static settings.jsonData.Json_Properties.isRemote;
@@ -36,7 +35,7 @@ public class Configuration {
         Configuration.driver = driver;
     }
 
-    public static WebDriver browserPicker (BrowserEnum browser) throws MalformedURLException {
+    public static void browserPicker (BrowserEnum browser) throws MalformedURLException {
 
         if (!isRemote) {
             switch (browser) {
@@ -46,7 +45,7 @@ public class Configuration {
                     break;
                 case CHROME:
                     WebDriverManager.chromedriver().setup();
-                    webDriverThreadLocal.set( driver = new ChromeDriver());
+                    webDriverThreadLocal.set(driver = new ChromeDriver());
                     break;
                 case EDGE:
                     WebDriverManager.edgedriver().setup();
@@ -77,24 +76,16 @@ public class Configuration {
         driver = WebDriverEventListenerRegister.registerWebDriverListener(driver);
 
         browserTypeThreadLocal.set(browser);
-        webDriverThreadLocal.set(driver);
 
         driver.manage().window().maximize();
+         webDriverThreadLocal.set(driver);
+    }
+
+    public static WebDriver getWebdriver () {
         if (webDriverThreadLocal.get() == null) {
             throw new IllegalStateException("WebDriver Instance was null! Please create instance of WebDriver using setWebDriver!");
         }
-
         return webDriverThreadLocal.get();
-    }
-
-    public static void startTestCase () {
-        webDriverThreadLocal.get().get(HOST);
-
-    }
-
-
-    public void closeTestCase () {
-
     }
 
     public void closeRunner() {

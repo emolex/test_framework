@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="OLX Test Runner" parallel="tests" thread-count="2">
 
+    <listeners>
+        <listener class-name="settings.utils.TestListeners"/>
+    </listeners>
+
 <!--          RUN ALL TestRunner CLASS WITH SPECIFIED BROWSER-->
     <test name="First test runner">
         <parameter name="browser" value="CHROME"/>

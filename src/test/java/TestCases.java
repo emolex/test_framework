@@ -1,10 +1,12 @@
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
 import settings.AssertLogic;
 
-import static pages.loginPage.LoginPageSelectors.*;
-import static pages.resetPasswordPage.ResetPasswordSelectors.*;
-import static settings.jsonData.Json_Notifies.*;
+import static pages.loginPage.LoginPageSelectors.logIn_emailInput;
+import static pages.loginPage.LoginPageSelectors.login_error_login;
+import static pages.resetPasswordPage.ResetPasswordSelectors.reset_error_code;
+import static settings.jsonData.Json_Notifies.resetpassword_wron_code;
 
 public class TestCases extends SetUp {
 
@@ -19,11 +21,11 @@ public class TestCases extends SetUp {
     public static void testWithWarnings() {
         homePageMethods.moveMouseBetweenCategories();
         headerPageMethods.clickOn_myOlx_before_login();
-        boolean isTrue = true;
         AssertLogic.assertThat(logIn_emailInput).checkText("koala123").isVisible();
     }
 
 
+    @Attachment(value = "testWithError", type = "image/png")
     public static void testWithError() {
         headerPageMethods.clickOn_myOlx_before_login();
         resetPasswordPageMethods.resetPassword_typeEmail("Emil");
