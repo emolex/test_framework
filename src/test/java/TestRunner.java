@@ -27,7 +27,7 @@ public class TestRunner extends TestCases {
     @Severity(BLOCKER)
     @Description ("Test regular logIn case")
     public void logIn_TEST() {
-        logIn();
+        logIn_NO_EMAIL();
     }
 
     @TmsLink("EC-816")
@@ -35,6 +35,6 @@ public class TestRunner extends TestCases {
     @Severity(MINOR)
     @Description ("Test with reset password")
     public void resetPassword_TEST() {
-        resetPassword();
+        resetPassword_WRONG_SMS_CODE();
     }
 }

@@ -1,3 +1,4 @@
 {
-  "register_success_notify": "SUCCESS! Your account was created!"
+  "register_success_notify": "SUCCESS! Your account was created!",
+  "resetpassword_wron_code": "Proszę wpisać co najmniej 6 znaków."
 }

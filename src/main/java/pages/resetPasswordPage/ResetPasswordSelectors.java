@@ -27,4 +27,7 @@ public class ResetPasswordSelectors {
 
     @FindBy(xpath = "//*[@title='E-mail']")
     public WebElement reset_email;
+
+    @FindBy(xpath = "//*[@for='code']")
+    public static WebElement reset_error_code;
 }

@@ -26,12 +26,12 @@ public class ResetPasswordPageMethods extends ResetPasswordSelectors {
     }
 
     public ResetPasswordPageMethods resetPassword_typeNewCode (String newCode) {
-        waitForIt(reset_code).click();
+        waitForIt(reset_code).sendKeys(newCode);
         return this;
     }
 
     public ResetPasswordPageMethods resetPassword_newPassword (String newPassword) {
-        waitForIt(reset_newPassword).click();
+        waitForIt(reset_newPassword).sendKeys(newPassword);
         return this;
     }
 
