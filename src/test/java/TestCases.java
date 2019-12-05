@@ -1,4 +1,3 @@
-import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import org.openqa.selenium.support.PageFactory;
 import settings.AssertLogic;
@@ -24,8 +23,6 @@ public class TestCases extends SetUp {
         AssertLogic.assertThat(logIn_emailInput).checkText("koala123").isVisible();
     }
 
-
-    @Attachment(value = "testWithError", type = "image/png")
     public static void testWithError() {
         headerPageMethods.clickOn_myOlx_before_login();
         resetPasswordPageMethods.resetPassword_typeEmail("Emil");

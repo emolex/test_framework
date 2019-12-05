@@ -30,6 +30,7 @@ public class TestListeners implements ITestListener {
     @Override
     public void onTestSkipped(ITestResult result) {
         logger.info("Test {} skipped!", result.getName());
+        ScreenShotMaker.makeScreenShot();
     }
 
     @Override

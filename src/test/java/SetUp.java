@@ -8,6 +8,7 @@ import settings.Configuration;
 import settings.TestMethods;
 import settings.enums.BrowserEnum;
 import settings.jsonData.Json_Properties;
+import settings.utils.TestListeners;
 
 import java.net.MalformedURLException;
 
@@ -26,6 +27,7 @@ public class SetUp {
     public static HeaderPageMethods headerPageMethods;
     public static HomePageMethods homePageMethods;
     public static ResetPasswordPageMethods resetPasswordPageMethods;
+    private static TestListeners testListeners;
 
     @Parameters("browser")
     @BeforeTest(alwaysRun = true)
@@ -35,6 +37,7 @@ public class SetUp {
         parseJson();
         browserPicker(browser);
         driver = getWebdriver();
+        testListeners = new TestListeners();
         testMethods = new TestMethods();
         configuration = new Configuration(driver);
         homePageMethods = new HomePageMethods(driver);
@@ -49,7 +52,7 @@ public class SetUp {
     }
 
     @AfterMethod(alwaysRun = true)
-    @Step("Clean all cookies and remove ...")
+    @Step("Clean all cookies...")
     protected void cleanUp() {
         driver.manage().deleteAllCookies();
     }
