@@ -4,6 +4,7 @@
 
     <listeners>
         <listener class-name="settings.utils.TestListeners"/>
+<!--        <listener class-name="settings.listeners.AnnotationTransformer"/>-->
     </listeners>
 
 <!--          RUN ALL TestRunner CLASS WITH SPECIFIED BROWSER-->
