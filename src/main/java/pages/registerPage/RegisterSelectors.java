@@ -1,14 +1,11 @@
 package pages.registerPage;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class RegisterSelectors {
+public class RegisterSelectors extends BasePage {
 
-    protected WebDriver driver;
-
-    RegisterSelectors (WebDriver driver) {
-        PageFactory.initElements(driver, this);
+    public RegisterSelectors(WebDriver driver) {
+        super(driver);
     }
-
 }

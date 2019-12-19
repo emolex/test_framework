@@ -15,11 +15,10 @@ public class HomePageMethods extends HomePageSelectors{
         super(driver);
     }
 
-    private Logger logger = LogManager.getLogger(HeaderPageMethods.class);
 
     @Step("Check mouse moving between motoryzacja category and moda category.")
-    public void moveMouseBetweenCategories () {
-    logger.info("check mouse moving...");
+    public void moveMouseBetweenCategories() {
+    log().info("check mouse moving...");
     doSomeAction(driver).moveToElement(motoryzacja_category).moveToElement(moda_category).build().perform();
     }
 }

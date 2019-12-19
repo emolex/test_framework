@@ -1,18 +1,12 @@
 package pages.myOlxPage;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class MyOlxSelectors {
+public class MyOlxSelectors extends BasePage {
 
-    protected WebDriver driver;
 
-    protected MyOlxSelectors(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+    public MyOlxSelectors(WebDriver driver) {
+        super(driver);
     }
-
-
-
-
 }

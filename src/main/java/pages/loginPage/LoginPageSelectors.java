@@ -2,13 +2,9 @@ package pages.loginPage;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.*;
+import pages.BasePage;
 
-public class LoginPageSelectors {
-    protected WebDriver driver;
-
-    LoginPageSelectors (WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+public class LoginPageSelectors extends BasePage {
 
     @FindBy(id = "login_tab")
     protected WebElement logIn_Tab;
@@ -30,4 +26,8 @@ public class LoginPageSelectors {
 
     @FindBy(xpath = "//*[@for='userEmail']")
     public static WebElement login_error_login;
+
+    public LoginPageSelectors(WebDriver driver) {
+        super(driver);
+    }
 }

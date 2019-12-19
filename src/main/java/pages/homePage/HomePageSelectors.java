@@ -3,16 +3,10 @@ package pages.homePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class HomePageSelectors {
+public class HomePageSelectors extends BasePage {
 
-    protected WebDriver driver;
-
-    public HomePageSelectors(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(xpath = "//a[@data-id='5']")
     protected WebElement motoryzacja_category;
@@ -23,4 +17,7 @@ public class HomePageSelectors {
     @FindBy (id = "headerLogo")
     public static WebElement mainAnnounceModal;
 
+    public HomePageSelectors(WebDriver driver) {
+        super(driver);
+    }
 }

@@ -2,10 +2,10 @@ package pages.registerPage;
 
 import org.openqa.selenium.WebDriver;
 
-public class RegisterMethods extends RegisterSelectors {
+public class registerMethods extends RegisterSelectors {
 
 
-    RegisterMethods(WebDriver driver) {
+    registerMethods(WebDriver driver) {
         super(driver);
     }
 }

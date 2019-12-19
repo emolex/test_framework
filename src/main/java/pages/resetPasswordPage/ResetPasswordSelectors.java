@@ -3,15 +3,9 @@ package pages.resetPasswordPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pages.BasePage;
 
-public class ResetPasswordSelectors {
-
-    protected WebDriver driver;
-
-    ResetPasswordSelectors (WebDriver driver) {
-        PageFactory.initElements(driver, this);
-    }
+public class ResetPasswordSelectors extends BasePage {
 
     @FindBy(id = "code")
     protected WebElement reset_code;
@@ -30,4 +24,8 @@ public class ResetPasswordSelectors {
 
     @FindBy(xpath = "//*[@for='code']")
     public static WebElement reset_error_code;
+
+    public ResetPasswordSelectors(WebDriver driver) {
+        super(driver);
+    }
 }
